@@ -62,6 +62,8 @@ RUN apk add --virtual .build-dependencies --no-cache \
  && mv /tmp/shinobi/Shinobi-$SHINOBI_BRANCH /opt/shinobi \
  && rm -f /tmp/shinobi.tar.bz2 \
  && cd /opt/shinobi \
+ && curl -o ./libs/customAutoLoad/mqtt.js https://gitlab.com/geerd/shinobi-mqtt/raw/master/mqtt.js \
+ && npm install mqtt \
  && npm i npm@latest -g \
  && npm install pm2 -g \
  && npm install \
