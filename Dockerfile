@@ -56,12 +56,12 @@ RUN apk add --virtual .build-dependencies --no-cache \
   rtmpdump-dev \ 
   x264-dev \ 
   x265-dev \ 
-  yasm-dev \
- && wget -q "https://gitlab.com/Shinobi-Systems/Shinobi/-/archive/$SHINOBI_BRANCH/Shinobi-$SHINOBI_BRANCH.tar.bz2?sha=$SHINOBI_SHA" -O /tmp/shinobi.tar.bz2 \
+  yasm-dev
+ RUN wget -q "https://gitlab.com/Shinobi-Systems/Shinobi/-/archive/$SHINOBI_BRANCH/Shinobi-$SHINOBI_BRANCH.tar.bz2?sha=$SHINOBI_SHA" -O /tmp/shinobi.tar.bz2 \
  && tar -xjpf /tmp/shinobi.tar.bz2 -C /tmp/shinobi \
  && mv /tmp/shinobi/Shinobi-$SHINOBI_BRANCH /opt/shinobi \
- && rm -f /tmp/shinobi.tar.bz2 \
- && cd /opt/shinobi \
+ && rm -f /tmp/shinobi.tar.bz2
+ RUN cd /opt/shinobi \
  && curl -o ./libs/customAutoLoad/mqtt.js https://gitlab.com/geerd/shinobi-mqtt/raw/master/mqtt.js \
  && npm install mqtt \
  && npm i npm@latest -g \
